@@ -18,28 +18,6 @@ function hourRotation(hours) {
   return (hours / 12) * 360;
 }
 
-// Program for increasing time
-const clock = function () {
-    // loop to add seconds
-  seconds++;
-  if (seconds >= 60) {
-    // loop to add minutes
-    minutes++;
-    // restart secs for a new min
-    seconds = 0;
-  }
-  if (minutes >= 60) {
-    // loop to add hours
-    hours++;
-    // reset mins for a new hour
-    minutes = 0;
-  }
-  if (hours > 12) {
-    // this is to not have military time
-    hours = 0;
-  }
-};
-
 // // set time
 function updateClock() {
   const now = new Date();
@@ -50,11 +28,10 @@ function updateClock() {
   // update clock
 
   // Set CSS transform property for each hand
-//   console.log("seconds:", seconds, "mins:", minutes, "hours", hours);
   secondHand.style.transform = "rotate(" + secondRotation(seconds) + "deg)";
   minuteHand.style.transform = "rotate(" + minuteRotation(minutes) + "deg)";
   hourHand.style.transform = "rotate(" + hourRotation(hours) + "deg)";
 }
 
-// // Call updateClock function every second
+// Call updateClock function every second
 setInterval(updateClock, 1000);
